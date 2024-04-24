@@ -16,6 +16,16 @@ Boolean.  Default: false
 Whether or not to close the datepicker immediately when a date is selected.
 
 
+assumeNearbyYear
+----------------
+
+Boolean or Integer.  Default: false
+
+If true, manually-entered dates with two-digit years, such as "5/1/15", will be parsed as "2015", not "15". If the year is less than 10 years in advance, the picker will use the current century, otherwise, it will use the previous one. For example "5/1/15" would parse to May 1st, 2015, but "5/1/97" would be May 1st, 1997.
+
+To configure the number of years in advance that the picker will still use the current century, use an Integer instead of the Boolean true. E.g. "assumeNearbyYear: 20"
+
+
 beforeShowDay
 -------------
 
@@ -226,16 +236,6 @@ Boolean.  Default: true
 Whether or not to force parsing of the input value when the picker is closed.  That is, when an invalid date is left in the input field by the user, the picker will forcibly parse that value, and set the input's value to the new, valid date, conforming to the given `format`.
 
 
-assumeNearbyYear
-----------------
-
-Boolean or Integer.  Default: false
-
-If true, manually-entered dates with two-digit years, such as "5/1/15", will be parsed as "2015", not "15". If the year is less than 10 years in advance, the picker will use the current century, otherwise, it will use the previous one. For example "5/1/15" would parse to May 1st, 2015, but "5/1/97" would be May 1st, 1997.
-
-To configure the number of years in advance that the picker will still use the current century, use an Integer instead of the Boolean true. E.g. "assumeNearbyYear: 20"
-
-
 format
 ------
 
@@ -343,7 +343,7 @@ maxViewMode
 
 Number, String.  Default: 4, "centuries"
 
-Set a maximum limit for the view mode.  Accepts: 0 or "days" or "month", 1 or "months" or "year", 2 or "years" or "decade", 3 or "decades" or "century", and 4 or "centuries" or "millenium".
+Set a maximum limit for the view mode.  Accepts: 0 or "days" or "month", 1 or "months" or "year", 2 or "years" or "decade", 3 or "decades" or "century", and 4 or "centuries" or "millennium".
 Gives the ability to pick only a day, a month, a year or a decade.  The day is set to the 1st for "months", the month is set to January for "years", the year is set to the first year from the decade for "decades", and the year is set to the first from the millennium for "centuries".
 
 
@@ -352,7 +352,7 @@ minViewMode
 
 Number, String.  Default: 0, "days"
 
-Set a minimum limit for the view mode.  Accepts: 0 or "days" or "month", 1 or "months" or "year", 2 or "years" or "decade", 3 or "decades" or "century", and 4 or "centuries" or "millenium".
+Set a minimum limit for the view mode.  Accepts: 0 or "days" or "month", 1 or "months" or "year", 2 or "years" or "decade", 3 or "decades" or "century", and 4 or "centuries" or "millennium".
 Gives the ability to pick only a month, a year or a decade.  The day is set to the 1st for "months", and the month is set to January for "years", the year is set to the first year from the decade for "decades", and the year is set to the first from the millennium for "centuries".
 
 
@@ -416,7 +416,7 @@ startView
 
 Number, String.  Default: 0, "days"
 
-The view that the datepicker should show when it is opened.  Accepts: 0 or "days" or "month", 1 or "months" or "year", 2 or "years" or "decade", 3 or "decades" or "century", and 4 or "centuries" or "millenium".  Useful for date-of-birth datepickers.
+The view that the datepicker should show when it is opened.  Accepts: 0 or "days" or "month", 1 or "months" or "year", 2 or "years" or "decade", 3 or "decades" or "century", and 4 or "centuries" or "millennium".  Useful for date-of-birth datepickers.
 
 
 templates
@@ -448,6 +448,9 @@ showWeekDays
 Boolean.  Default: true
 
 If false, the datepicker will not append the names of the weekdays to its view. Default behavior is appending the weekdays.
+
+.. figure:: _static/screenshots/option_showweekdays.png
+    :align: center
 
 
 title
@@ -526,6 +529,7 @@ This is a quick overview of all the options and their default values
 Option                       Default value
 =====================        =============
 autoclose                    false
+assumeNearbyYear             false
 beforeShowDay
 beforeShowMonth
 beforeShowYear
@@ -542,7 +546,6 @@ disableTouchKeyboard         false
 enableOnReadonly             true
 endDate                      Infinity
 forceParse                   true
-assumeNearbyYear             false
 format                       'mm/dd/yyyy'
 immediateUpdates             false
 inputs
@@ -560,7 +563,7 @@ startView                    0 'days' (current month)
 templates
 title                        ''
 todayBtn                     false
-todayHighlight               true
+todayHighlight               false
 toggleActive                 false
 weekStart                    0 (Sunday)
 zIndexOffset                 10
